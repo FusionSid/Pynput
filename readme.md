@@ -1,1 +1,1 @@
-## This is an auto-typer python script that starts whrere you want and counts till the desired number
+## Is this project are a bunch of script that controll my keyboard and do shit
