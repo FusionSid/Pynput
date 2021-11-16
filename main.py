@@ -3,6 +3,8 @@ import typing_extensions
 from pynput.keyboard import HotKey, Key, KeyCode, Listener, Controller
 import sys
 import time
+from pynput.mouse import Controller, Button
+import time
 
 count = 0
 keys = []
@@ -24,19 +26,33 @@ def hotkeys():
             time.sleep(0.5)
 
 
+    def f3():
+        mouse = Controller()
+        time.sleep(4)
+        for i in range(1000):
+            mouse.press(Button.right)
+            mouse.release(Button.right)
+            time.sleep(0.0075)
+
+
     terminate = HotKey(
         [Key.cmd, Key.esc],
         f1
     )
     
     # KeyCode(char='')
+    autoclick =  HotKey(
+        [Key.cmd, KeyCode(char=']')],
+        f3
+    )
+
 
     type = HotKey(
         [Key.cmd, Key.shift],
         f2
     )
 
-    hotkeys = [terminate, type]
+    hotkeys = [terminate, type, autoclick]
 
 
     def on_press(key):
@@ -51,6 +67,7 @@ def hotkeys():
 
     with Listener(on_press=on_press, on_release=on_release) as l:
         l.join()
+
 
 
 # Logs what i type and everytime i hit space it writes a new line
