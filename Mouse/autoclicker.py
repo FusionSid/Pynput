@@ -7,4 +7,4 @@ time.sleep(4)
 for i in range(5000):
     mouse.press(Button.left)
     mouse.release(Button.left)
-    time.sleep(0.0075)
+    time.sleep(0.05)
